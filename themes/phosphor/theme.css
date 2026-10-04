@@ -1,0 +1,60 @@
+/**
+ * 终端绿 —— CRT 磷光屏观感。
+ *
+ * 这一套演示了主题**能改字体栈**（`--dshpz-font-ui`）：整块面板换成等宽字体，
+ * 数字与路径天然对齐。字体栈只列系统自带的等宽字体，**不引外部字体文件**——
+ * `@font-face` 会去网上拉 woff，那既违反本插件的零外部请求约束，
+ * 也会让主题在离线时变成「字体没加载、布局跳动」。
+ */
+
+:root {
+  --dshpz-accent: #39ff9a;
+  --dshpz-accent-hi: #b6ffd8;
+  --dshpz-accent-lo: #0f7a4a;
+
+  /* 亮绿主色 → 深色前景。 */
+  --dshpz-on-accent: #04160d;
+
+  /* 磷光屏的底色：偏暗的墨绿玻璃，叠在宿主底上。 */
+  --dshpz-glass-sheen: linear-gradient(135deg, color-mix(in srgb, #39ff9a 10%, transparent), transparent 58%);
+
+  /* 扫描线网格：比默认更密，才像显像管。 */
+  --dshpz-grid: color-mix(in srgb, #39ff9a 14%, transparent);
+
+  /* 发光开足——这套主题就是要那个「糊一圈」的味道。 */
+  --dshpz-glow: 0 0 0 1px #39ff9a, 0 0 16px -4px #39ff9a;
+  --dshpz-shadow: 0 1px 2px rgba(0, 30, 15, .5), 0 24px 64px -12px rgba(0, 40, 20, .7);
+
+  /* 更方：终端没有圆角。 */
+  --dshpz-radius-sm: 2px;
+  --dshpz-radius-md: 3px;
+  --dshpz-radius-lg: 5px;
+
+  /* 全等宽：连正文都用等宽，数字与路径才对得齐。 */
+  --dshpz-font-ui: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* 动效像光标刷新一样快。 */
+  --dshpz-dur-in: 140ms;
+  --dshpz-dur-fast: 60ms;
+}
+
+/* 标题图标：磷光方块。 */
+.dshpz-tlogo {
+  color: var(--dshpz-on-accent);
+  background: linear-gradient(135deg, var(--dshpz-accent-hi), var(--dshpz-accent-lo));
+}
+
+/* 当前项：实心绿底 + 深色字。 */
+.dshpz-btn[data-on="1"] {
+  color: var(--dshpz-on-accent);
+  background: var(--dshpz-accent);
+}
+
+/* 面板外框描一道绿边，像屏幕的辉光。 */
+.dshpz-panel {
+  box-shadow: var(--dshpz-shadow), inset 0 0 0 1px color-mix(in srgb, #39ff9a 22%, transparent);
+}
+
+.dshpz-tcard[data-on="1"] {
+  border-color: var(--dshpz-accent);
+}

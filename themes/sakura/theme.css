@@ -1,0 +1,60 @@
+/**
+ * 樱花 —— 暖粉主色。
+ *
+ * 只覆盖 `--dshpz-*`：基底（bg / label / border）**故意留空**，让它们继续吃宿主的
+ * `--dsw-alias-*` 语义令牌——这样宿主切浅色/深色时，面板的底色与文字自动跟随，
+ * 主题只负责「个性」那一层（主色、发光、玻璃、圆角）。
+ *
+ * 这是主题作者最该照抄的一条经验：**别把底色写死**。写死 `#111` 的主题在浅色宿主上
+ * 会变成一块黑砖，而作者通常只在自己那台机器上试过深色。
+ */
+
+:root {
+  /* 主色三件套：accent 用在实心按钮与徽标，hi 用于渐变亮端，lo 用于暗端。 */
+  --dshpz-accent: #ff7ab6;
+  --dshpz-accent-hi: #ffc2dd;
+  --dshpz-accent-lo: #b13a72;
+
+  /**
+   * 主色之上的前景色。
+   *
+   * 必须与 accent 的明度相反：accent 是亮粉，所以这里用深酒红。
+   * 写成 `#fff` 会得到「白字压亮粉」——几乎读不出来，而这是主题最常见的翻车点。
+   */
+  --dshpz-on-accent: #2a0a18;
+
+  /* 玻璃底与光晕：半透明层，靠宿主的不透明底兜住。 */
+  --dshpz-glass-sheen: linear-gradient(135deg, color-mix(in srgb, #ff7ab6 12%, transparent), transparent 62%);
+
+  /* 网格：极淡的粉色扫描线，纯装饰。 */
+  --dshpz-grid: color-mix(in srgb, #ff7ab6 11%, transparent);
+
+  /* 发光与投影：发光只给「当前状态」用，不要满屏。 */
+  --dshpz-glow: 0 0 0 1px #ff7ab6, 0 0 18px -6px #ff7ab6;
+  --dshpz-shadow: 0 1px 2px rgba(60, 10, 35, .35), 0 24px 64px -12px rgba(60, 10, 35, .55);
+
+  /* 尺度：比默认更圆一点，配暖色更柔。 */
+  --dshpz-radius-sm: 8px;
+  --dshpz-radius-md: 13px;
+  --dshpz-radius-lg: 20px;
+
+  /* 动效：稍慢一点，营造「飘落」的观感。 */
+  --dshpz-dur-in: 320ms;
+  --dshpz-ease-out: cubic-bezier(.16, 1, .3, 1);
+}
+
+/* 实心主色按钮与徽标：前景色必须一起换，否则就是白底白字。 */
+.dshpz-btn[data-on="1"] {
+  color: var(--dshpz-on-accent);
+  background: linear-gradient(135deg, var(--dshpz-accent-hi), var(--dshpz-accent));
+}
+
+/* 面板标题下的细线：跟着主色走。 */
+.dshpz-tlogo {
+  background: linear-gradient(135deg, var(--dshpz-accent-hi), var(--dshpz-accent-lo));
+}
+
+/* 主题卡片当前项的高亮。 */
+.dshpz-tcard[data-on="1"] {
+  border-color: var(--dshpz-accent);
+}

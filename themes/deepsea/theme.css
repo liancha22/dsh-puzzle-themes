@@ -1,0 +1,54 @@
+/**
+ * 深海 —— 青蓝渐变、大圆角、慢动效。
+ *
+ * 这一套演示「同一种令牌能做出完全不同的气质」：它和樱花用的是**同一批变量**，
+ * 差别只在取值与几处结构规则。主题不需要插件的任何配合，改的都是既有的 `--dshpz-*`。
+ */
+
+:root {
+  --dshpz-accent: #38bdf8;
+  --dshpz-accent-hi: #a5e8ff;
+  --dshpz-accent-lo: #0b6ea8;
+
+  /* 亮蓝主色 → 深海底色前景。 */
+  --dshpz-on-accent: #041824;
+
+  /* 冷色光晕 + 两层渐变，做出「水面下的光」。 */
+  --dshpz-glass-sheen: linear-gradient(160deg, color-mix(in srgb, #38bdf8 13%, transparent), transparent 55%),
+    linear-gradient(20deg, color-mix(in srgb, #0b6ea8 10%, transparent), transparent 60%);
+
+  /* 网格：水波感的稀疏细线。 */
+  --dshpz-grid: color-mix(in srgb, #38bdf8 9%, transparent);
+
+  --dshpz-glow: 0 0 0 1px #38bdf8, 0 0 20px -6px #38bdf8;
+  --dshpz-shadow: 0 2px 4px rgba(0, 20, 35, .4), 0 28px 72px -14px rgba(0, 30, 50, .65);
+
+  /* 大圆角：深海这一套的辨识度主要来自这里。 */
+  --dshpz-radius-sm: 10px;
+  --dshpz-radius-md: 16px;
+  --dshpz-radius-lg: 26px;
+
+  /* 慢动效：像水下漂浮。 */
+  --dshpz-dur-in: 380ms;
+  --dshpz-dur-fast: 160ms;
+  --dshpz-ease-out: cubic-bezier(.22, 1, .36, 1);
+}
+
+.dshpz-tlogo {
+  background: linear-gradient(135deg, var(--dshpz-accent-hi), var(--dshpz-accent-lo));
+}
+
+.dshpz-btn[data-on="1"] {
+  color: var(--dshpz-on-accent);
+  background: linear-gradient(135deg, var(--dshpz-accent-hi), var(--dshpz-accent));
+}
+
+/* 分区标题的竖条：拉长一点，配大圆角。 */
+.dshpz-secttitle::before {
+  background: linear-gradient(180deg, var(--dshpz-accent-hi), var(--dshpz-accent-lo));
+  border-radius: 99px;
+}
+
+.dshpz-tcard[data-on="1"] {
+  border-color: var(--dshpz-accent);
+}

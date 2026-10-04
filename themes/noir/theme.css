@@ -1,0 +1,56 @@
+/**
+ * 墨黑 —— 极简、无彩色、无发光。
+ *
+ * 与樱花相反的一条路：主色取中性灰，发光换成**实心描边**。
+ *
+ * 为什么发光要换成描边而不是直接删掉：发光在这个面板里承担的是**信息**
+ * （哪个页签/胶囊是当前项），不只是效果。删掉之后老浏览器上就分不出选中态了——
+ * 「效果可以降级，信息不能丢」。
+ */
+
+:root {
+  --dshpz-accent: #c9ccd4;
+  --dshpz-accent-hi: #eef0f4;
+  --dshpz-accent-lo: #8b909b;
+
+  /* 中性亮色主色 → 前景必须取深色。 */
+  --dshpz-on-accent: #14161a;
+
+  /* 不要光晕：`none` 是合法的 background-image 值，规则层不必为它写分支。 */
+  --dshpz-glass-sheen: none;
+
+  /* 不要网格。 */
+  --dshpz-grid: transparent;
+
+  /* 选中态改用描边（信息保留，效果退场）。 */
+  --dshpz-glow: 0 0 0 1px #c9ccd4;
+  --dshpz-shadow: 0 12px 40px rgba(0, 0, 0, .32);
+
+  /* 更方的圆角，配无彩色的冷峻感。 */
+  --dshpz-radius-sm: 4px;
+  --dshpz-radius-md: 7px;
+  --dshpz-radius-lg: 11px;
+
+  /* 更快的动效：少即是快。 */
+  --dshpz-dur-in: 160ms;
+  --dshpz-dur-fast: 80ms;
+}
+
+/* 当前项：描边 + 字重，而不是发光。 */
+.dshpz-btn[data-on="1"] {
+  color: var(--dshpz-label-1);
+  border-color: var(--dshpz-accent);
+  background: transparent;
+}
+
+/* 标题图标去掉渐变，改成纯描边风格。 */
+.dshpz-tlogo {
+  color: var(--dshpz-label-1);
+  background: transparent;
+  border: 1px solid var(--dshpz-accent);
+}
+
+.dshpz-tcard[data-on="1"] {
+  border-color: var(--dshpz-accent);
+  background: var(--dshpz-bg-3);
+}

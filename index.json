@@ -1,0 +1,46 @@
+{
+  "apiVersion": 1,
+  "updatedAt": "2026-10-04",
+  "themes": [
+    {
+      "id": "deepsea",
+      "name": "深海",
+      "author": "liancha22",
+      "description": "青蓝渐变、大圆角与长动效；安静、偏冷。",
+      "version": "1.0.0",
+      "accent": "#38bdf8",
+      "file": "themes/deepsea/theme.css",
+      "sha256": "a4c4c165dddf89fc6317783cae6f69f9ced727cbc5619cd596964d6aa3f19f36"
+    },
+    {
+      "id": "noir",
+      "name": "墨黑",
+      "author": "liancha22",
+      "description": "零彩色、零发光，只靠描边与字重分层；适合长时间盯着看。",
+      "version": "1.0.0",
+      "accent": "#c9ccd4",
+      "file": "themes/noir/theme.css",
+      "sha256": "8f73633837d1a751802adc18180fe882187d96923a87823249f69394ab659285"
+    },
+    {
+      "id": "phosphor",
+      "name": "终端绿",
+      "author": "liancha22",
+      "description": "磷光绿等宽字体、扫描线网格；CRT 终端观感。",
+      "version": "1.0.0",
+      "accent": "#39ff9a",
+      "file": "themes/phosphor/theme.css",
+      "sha256": "5f6e975a416c4c40015b294d0088a2b9104cb37200c14b865e9bb5ae80df2bbf"
+    },
+    {
+      "id": "sakura",
+      "name": "樱花",
+      "author": "liancha22",
+      "description": "暖粉主色，柔光玻璃；浅色与深色宿主下都偏暖。",
+      "version": "1.0.0",
+      "accent": "#ff7ab6",
+      "file": "themes/sakura/theme.css",
+      "sha256": "f59a122652e207c0c6fb52ba800736737a3d2827f8be720e91529d7f1aaceaac"
+    }
+  ]
+}
