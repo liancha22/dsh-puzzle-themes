@@ -1,0 +1,84 @@
+/**
+ * 新拟物 —— 同色系凸起与凹陷。
+ *
+ * 这一套与仓库里其它几套的**做法不同**：别的主题靠颜色与发光区分层次，
+ * 新拟物**不用描边、不用发光、几乎不用颜色**，只靠一明一暗两道投影，
+ * 把元素从同色的底面上「挤」出来（凸起）或「按」下去（凹陷）。
+ *
+ * 所以这里的取值有一条硬纪律：**投影必须比颜色重要**。把 `--dshpz-shadow` 改淡，
+ * 这套皮肤立刻退化成「一片灰」，辨识度全在投影上。
+ *
+ * 注意：注释里不写被禁的关键字（校验器是文本包含匹配，写进注释也会被拒）。
+ */
+
+:root {
+  /* 冷灰主色：新拟物要的是「同一材质的不同高度」，不是彩色点缀。 */
+  --dshpz-accent: #7c8aa0;
+  --dshpz-accent-hi: #9fb0c6;
+  --dshpz-accent-lo: #55606f;
+  /* 主色是中间调的灰蓝，深色字与浅色字都能读；取深色更稳。 */
+  --dshpz-on-accent: #10161d;
+
+  /* 光晕几乎不要：新拟物靠投影塑形，叠一层彩色光晕会把它拉回「扁平 + 发光」。 */
+  --dshpz-glass-sheen: linear-gradient(180deg, rgba(255, 255, 255, .05), transparent 55%);
+
+  /* 网格关掉：网格是另一套语言（仪表盘），与新拟物的「一整块材质」冲突。 */
+  --dshpz-grid: transparent;
+
+  /**
+   * 发光换成「双投影」——这一条是整套皮肤的骨架。
+   *
+   * 左上白、右下黑，是光从左上打来的经典假设；两个投影都带一点模糊，
+   * 元素看起来才是「从底面上鼓起来」的，而不是「贴了一张带黑边的纸」。
+   * 用 `--dshpz-glow` 承载它：插件把这个令牌用在选中态与聚焦态上，
+   * 于是选中 = 凸起得更明显，语义正好。
+   */
+  --dshpz-glow: -3px -3px 7px rgba(255, 255, 255, .09), 3px 3px 8px rgba(0, 0, 0, .55);
+
+  /* 面板本身也是同一块材质：外投影要软、要散，不能有硬边。 */
+  --dshpz-shadow: -6px -6px 18px rgba(255, 255, 255, .05), 8px 10px 28px rgba(0, 0, 0, .6);
+
+  /* 圆角偏大：新拟物的投影在圆角处过渡最自然，直角会露出「贴纸」感。 */
+  --dshpz-radius-sm: 10px;
+  --dshpz-radius-md: 14px;
+  --dshpz-radius-lg: 22px;
+
+  --dshpz-dur-in: 300ms;
+  --dshpz-dur-fast: 140ms;
+  --dshpz-ease-out: cubic-bezier(.2, .9, .3, 1);
+}
+
+/* 徽标：凸起的一块，而不是渐变块。 */
+.dshpz-tlogo {
+  background: linear-gradient(160deg, var(--dshpz-accent-hi), var(--dshpz-accent-lo));
+  box-shadow: var(--dshpz-glow);
+}
+
+/* 选中的按钮：**凹陷**——新拟物里「按下去」才是选中，凸起是待按。 */
+.dshpz-btn[data-on="1"] {
+  color: var(--dshpz-on-accent);
+  background: var(--dshpz-accent);
+  box-shadow: inset 3px 3px 7px rgba(0, 0, 0, .45), inset -2px -2px 6px rgba(255, 255, 255, .12);
+}
+
+/* 分区标题的竖条：做成一颗小小的凸起圆点。 */
+.dshpz-secttitle::before {
+  background: var(--dshpz-accent);
+  border-radius: 99px;
+  box-shadow: -2px -2px 5px rgba(255, 255, 255, .08), 2px 2px 5px rgba(0, 0, 0, .5);
+}
+
+/* 主题卡片：默认是平的（列表要能一眼扫过），选中才浮起来。 */
+.dshpz-tcard {
+  box-shadow: none;
+}
+
+.dshpz-tcard[data-on="1"] {
+  border-color: transparent;
+  box-shadow: var(--dshpz-glow);
+}
+
+/* 进度环的底圈压暗一点，让填充部分的凸起感更明显。 */
+.dshpz-ringcircle {
+  stroke: rgba(0, 0, 0, .45);
+}

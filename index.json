@@ -1,6 +1,6 @@
 {
   "apiVersion": 1,
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-08",
   "themes": [
     {
       "id": "deepsea",
@@ -11,6 +11,16 @@
       "accent": "#38bdf8",
       "file": "themes/deepsea/theme.css",
       "sha256": "a4c4c165dddf89fc6317783cae6f69f9ced727cbc5619cd596964d6aa3f19f36"
+    },
+    {
+      "id": "neumorph",
+      "name": "新拟物",
+      "author": "liancha22",
+      "description": "同色系凸起与凹陷：不做描边、不用发光，靠一明一暗两道投影把元素从底面上「挤」出来。",
+      "version": "1.0.0",
+      "accent": "#7c8aa0",
+      "file": "themes/neumorph/theme.css",
+      "sha256": "156ca2fd444715336e0aa1060a10ebbb5cbcc6442f632144b0034c09a6bfcda4"
     },
     {
       "id": "noir",
